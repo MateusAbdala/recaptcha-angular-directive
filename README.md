@@ -6,20 +6,20 @@ An easy use angular directive
 import { Directive, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-declare const grecaptcha : any;
+declare const grecaptcha: any;
 
 declare global {
   interface Window {
-    grecaptcha : any;
-    reCaptchaLoad : () => void
+    grecaptcha: any;
+    reCaptchaLoad: () => void
   }
 }
 
 export interface ReCaptchaConfig {
-  theme? : 'dark' | 'light';
-  type? : 'audio' | 'image';
-  size? : 'compact' | 'normal';
-  tabindex? : number;
+  theme?: 'dark' | 'light';
+  type?: 'audio' | 'image';
+  size?: 'compact' | 'normal';
+  tabindex?: number;
 }
 
 @Directive({
@@ -34,14 +34,14 @@ export interface ReCaptchaConfig {
   ]
 })
 export class ReCaptchaDirective implements OnInit, ControlValueAccessor {
-  @Input() key : string;
-  @Input() config : ReCaptchaConfig = {};
+  @Input() key: string;
+  @Input() config: ReCaptchaConfig = {};
 
   @Output() captchaResponse = new EventEmitter<string>();
   @Output() captchaExpired = new EventEmitter();
 
   private widgetId: number;
-  private render( element: HTMLElement, config ) : number {
+  private render( element: HTMLElement, config ): number {
     return grecaptcha.render(element, config);
   }
   private onChange: (value: string) => void;
