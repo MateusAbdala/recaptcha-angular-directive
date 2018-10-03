@@ -115,6 +115,10 @@ export class ReCaptchaDirective implements OnInit, ControlValueAccessor {
     this.onTouched = fn;
   }
 }
-
 	
+```
+
+implementation:
+```html
+<div Recaptcha key="yourPublicKey" (captchaResponse)="captchaResponse($event)" (captchaExpired)="captchaExpired()"></div>
 ```
